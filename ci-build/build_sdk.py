@@ -140,9 +140,12 @@ with_test_lib = False
 # ------------------------------------------------------------------
 # Paths
 script_dir              = os.path.dirname(os.path.realpath(__file__))
+#root folder
 root_dir                = os.path.dirname(os.path.normpath(script_dir))
 android_submodule_dir   = '{0}/ext/android'.format(root_dir)
+#build\ios
 ios_submodule_dir       = '{0}\\build\\ios'.format(script_dir)
+grpc_v1220_dir          = '{0}\\grpcV1.22.0'.format(script_dir)
 windows_submodule_dir   = '{0}/ext/windows'.format(root_dir)
 debug_green('Script start. script_dir=[{0}]. root_dir=[{1}]. ios_submodule_dir=[{2}]'.format(script_dir, root_dir,ios_submodule_dir))
 # ------------------------------------------------------------------
@@ -151,7 +154,7 @@ if platform == 'iOS':
     set_log_tag('IOS-SDK-BUILD')
     ####check ios build script folder
     check_submodule_dir('iOS', ios_submodule_dir)
-    ios.build(root_dir, ios_submodule_dir, with_test_lib)
+    ios.build(script_dir, grpc_v1220_dir,output_dir, with_test_lib)
 elif platform == 'Android':
     set_log_tag('ANROID-SDK-BUILD')
     check_submodule_dir('Android', android_submodule_dir + '/sdk')
